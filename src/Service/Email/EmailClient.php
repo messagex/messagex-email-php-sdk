@@ -27,6 +27,6 @@ class EmailClient extends MxClient
      */
     protected function getServiceDescriptorPath()
     {
-        return __DIR__ . '/../descriptor.json';
+        return __DIR__ . '/../../descriptor.json';
     }
 }
