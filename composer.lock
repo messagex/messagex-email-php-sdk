@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "329b082550af61bf42dfe8943403f7ab",
+    "content-hash": "d05c5ae6787a2444ea16f0e044547268",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -525,6 +525,48 @@
             ],
             "description": "A library for easily creating recursive-descent parsers.",
             "time": "2012-11-18T18:08:43+00:00"
+        },
+        {
+            "name": "messagex/messagex-php-sdk-common",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "git@vines.smsglobal.local:messagex/libraries/php/messagex-php-sdk-common.git",
+                "reference": "e8bfc51b68e3f5527b1249ebb4adbc4b28a6287f"
+            },
+            "require": {
+                "guzzlehttp/guzzle": "6.3.0",
+                "jms-serializer/serializer": "1.3.3",
+                "symfony/options-resolver": "^3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "6.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MessageX\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Silvio Marijic",
+                    "email": "silvio.marijic@smsglobal.com"
+                }
+            ],
+            "description": "MessageX PHP SDK Common",
+            "homepage": "https://messagex.com",
+            "keywords": [
+                "email",
+                "messagex",
+                "php",
+                "sdk",
+                "sms"
+            ],
+            "time": "2017-10-02 17:03:33"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -2128,7 +2170,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "messagex/messagex-php-sdk-common": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

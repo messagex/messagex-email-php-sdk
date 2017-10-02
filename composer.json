@@ -8,13 +8,19 @@
     "authors": [
         {"name": "Silvio Marijic", "email": "silvio.marijic@smsglobal.com"}
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@vines.smsglobal.local:messagex/libraries/php/messagex-php-sdk-common.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "MessageX\\": "src/"
         }
     },
     "require": {
-        "messagex/messagex-php-sdk-common": "*"
+        "messagex/messagex-php-sdk-common": "dev-develop"
     },
     "require-dev": {
         "phpunit/phpunit": "6.3.0"
