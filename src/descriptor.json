@@ -1,5 +1,6 @@
 {
     "email": {
+        "host": "https://api.email.messagex.com",
         "endpoints": {
             "SendEmail": {
                 "method": "POST",
