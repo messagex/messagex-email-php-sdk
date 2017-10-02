@@ -1,0 +1,22 @@
+{
+    "name": "messagex/messagex-email-php-sdk",
+    "type": "library",
+    "description": "MessageX PHP SDK",
+    "keywords": ["messagex", "php", "email", "sdk"],
+    "homepage": "https://messagex.com",
+    "license": "MIT",
+    "authors": [
+        {"name": "Silvio Marijic", "email": "silvio.marijic@smsglobal.com"}
+    ],
+    "autoload": {
+        "psr-4": {
+            "MessageX\\": "src/"
+        }
+    },
+    "require": {
+        "messagex/messagex-php-sdk-common": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.3.0"
+    }
+}
