@@ -1,5 +1,5 @@
 {
-    "email": {
+    "service": {
         "host": "https://email.api.messagex.com",
         "endpoints": {
             "SendEmail": {
