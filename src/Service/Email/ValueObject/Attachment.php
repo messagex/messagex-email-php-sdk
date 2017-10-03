@@ -89,7 +89,7 @@ final class Attachment
         return new self(
             $file->getFilename(),
             'application/octet-stream',
-            base64_encode($content)
+            $content
         );
     }
 
