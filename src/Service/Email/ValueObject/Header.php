@@ -35,7 +35,7 @@ final class Header
      * @param string $name Name of the header.
      * @param mixed $value Value of the header.
      */
-    public function __construct(string $name, $value)
+    public function __construct($name, $value)
     {
         $this->name = $name;
         $this->value = $value;
