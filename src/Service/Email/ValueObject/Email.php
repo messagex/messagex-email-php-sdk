@@ -164,7 +164,7 @@ class Email
      */
     public function addHeader($header, $value)
     {
-        $this->headers = ['header' => $header, 'value' => $value];
+        $this->headers[] = new Header($header, $value);
 
         return $this;
     }
@@ -193,9 +193,12 @@ class Email
 
     /**
      * @param array $substitutions
+     * @return $this
      */
     public function addSubstitutions(array $substitutions)
     {
         $this->substitutions = $substitutions;
+
+        return $this;
     }
 }
