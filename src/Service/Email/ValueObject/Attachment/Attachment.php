@@ -7,12 +7,11 @@
  * file that was distributed with this source code.
  */
 
-namespace MessageX\Service\Email\ValueObject;
+namespace MessageX\Service\Email\ValueObject\Attachment;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
 use MessageX\Service\Email\Exception\FileTypeNotAllowed;
-use MessageX\Service\Email\ValueObject\Attachment\MimeType;
 use RuntimeException;
 use SplFileObject;
 

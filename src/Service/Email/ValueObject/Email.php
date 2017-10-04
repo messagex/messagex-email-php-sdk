@@ -11,13 +11,14 @@ namespace MessageX\Service\Email\ValueObject;
 
 use JMS\Serializer\Annotation as Serializer;
 use MessageX\Service\Email\Exception\RecipientsOutOfBound;
+use MessageX\Service\Email\ValueObject\Attachment\Attachment;
 
 /**
  * Class Email
  * @package MessageX\Service\Email\ValueObject
  * @author Silvio Marijic <silvio.marijic@smsglobal.com>
  */
-class Email
+final class Email
 {
     /**
      * @var string
@@ -81,7 +82,7 @@ class Email
 
     /**
      * @var
-     * @Serializer\Type("array<MessageX\Service\Email\ValueObject\Attachment>")
+     * @Serializer\Type("array<MessageX\Service\Email\ValueObject\Attachment\Attachment>")
      */
     private $attachments;
 
