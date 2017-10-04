@@ -11,6 +11,8 @@ namespace MessageX\Service\Email\ValueObject;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
+use MessageX\Service\Email\Exception\FileTypeNotAllowed;
+use MessageX\Service\Email\ValueObject\Attachment\MimeType;
 use RuntimeException;
 use SplFileObject;
 
@@ -22,16 +24,20 @@ use SplFileObject;
 final class Attachment
 {
     /**
+     * @var array
+     */
+    private static $unallowedFileTypes = [
+        'ade', 'adp', 'bat', 'chm', 'cmd', 'com', 'cpl', 'exe', 'hta',
+        'ins', 'isp', 'jar', 'jse', 'lib', 'lnk', 'mde', 'msc', 'msi',
+        'msp', 'mst', 'nsh', 'pif', 'scr', 'sct', 'shb', 'sys', 'vb',
+        'vbe', 'vbs', 'vxd', 'wsc', 'wsf', 'wsh','js'
+    ];
+
+    /**
      * @var string Name of the attachment.
      * @Serializer\Type("string")
      */
     private $name;
-
-    /**
-     * @var string Content type of the attachment.
-     * @Serializer\Type("string")
-     */
-    private $contentType;
 
     /**
      * @var string Base64 encoded content of the attachment.
@@ -40,21 +46,28 @@ final class Attachment
     private $content;
 
     /**
+     * @var string Content type of the attachment.
+     * @Serializer\Type("string")
+     */
+    private $mime;
+
+    /**
      * Attachment constructor.
      * @param string $name Name of the attachment.
-     * @param string $contentType Content type of the attachment.
+     * @param string $mime Mime type of the attachment.
      * @param string $content Base64 encoded content of the attachment.
      */
-    public function __construct($name, $contentType, $content)
+    public function __construct($name, $mime, $content)
     {
-        $this->name             = $name;
-        $this->contentType      = $contentType;
-        $this->content          = base64_encode($content);
+        $this->name     = $name;
+        $this->mime     = $mime;
+        $this->content  = base64_encode($content);
     }
 
     /**
      * @param string $path Absolute path to the file.
      * @return Attachment
+     * @throws FileTypeNotAllowed
      */
     public static function fromFile($path)
     {
@@ -71,6 +84,16 @@ final class Attachment
         }
 
         $file = new SplFileObject($path, 'r');
+        if (in_array($file->getExtension(), self::$unallowedFileTypes)) {
+            throw new FileTypeNotAllowed(
+                sprintf(
+                    'Attachment file type % is not allowed',
+                    $file->getExtension()
+                )
+            );
+        }
+
+        $mime = new MimeType($file->getExtension());
 
         if (! $file->isReadable()) {
             throw new RuntimeException(
@@ -88,7 +111,7 @@ final class Attachment
 
         return new self(
             $file->getFilename(),
-            'application/octet-stream',
+            $mime,
             $content
         );
     }
