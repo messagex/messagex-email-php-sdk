@@ -19,7 +19,12 @@ use JMS\Serializer\Annotation as Serializer;
 final class Options
 {
     /**
-     * @var bool Specifies whether emails are transactional or marketing (batch).
+     * Maximum number of recipients in transactional email.
+     */
+    const MAX_RECIPIENTS_TRANS_EML = 3;
+
+    /**
+     * @var bool Specifies whether emails are transactional or bulk.
      * @Serializer\Type("boolean")
      */
     private $transactional = false;
@@ -56,7 +61,7 @@ final class Options
     /**
      *
      */
-    public function flagAsMarketing()
+    public function flagAsBulk()
     {
         $this->transactional = false;
     }

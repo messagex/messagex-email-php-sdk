@@ -10,6 +10,7 @@
 namespace MessageX\Service\Email\ValueObject;
 
 use JMS\Serializer\Annotation as Serializer;
+use MessageX\Service\Email\Exception\RecipientsOutOfBound;
 
 /**
  * Class Email
@@ -198,6 +199,29 @@ class Email
     public function addSubstitutions(array $substitutions)
     {
         $this->substitutions = $substitutions;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     * @throws RecipientsOutOfBound
+     */
+    public function transactional()
+    {
+        $count = count($this->to) + count($this->cc) + count($this->bcc);
+        if ($count > Options::MAX_RECIPIENTS_TRANS_EML) {
+            throw new RecipientsOutOfBound(
+                sprintf(
+                    'Number of recipients in transactional email can not exceed %d, %d passed',
+                    Options::MAX_RECIPIENTS_TRANS_EML,
+                    $count
+                )
+            );
+        }
+
+        $this->options
+            ->flagAsTransactional();
 
         return $this;
     }
