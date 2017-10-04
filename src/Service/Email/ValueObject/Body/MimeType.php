@@ -7,6 +7,7 @@
  */
 
 namespace MessageX\Service\Email\ValueObject\Body;
+use MessageX\Exception\InvalidArgumentType;
 
 /**
  * Class MimeType
@@ -36,10 +37,16 @@ final class MimeType
     /**
      * MimeType constructor.
      * @param string $mime
+     * @throws InvalidArgumentType
      */
     public function __construct($mime)
     {
         if (! is_string($mime)) {
+            if (! is_string($mime)) {
+                throw new InvalidArgumentType(
+                    sprintf('Mime-Type has to be instance of string, %s given.', gettype($mime))
+                );
+            }
         }
 
         $this->mime = in_array($mime, $this->mimeTypes)

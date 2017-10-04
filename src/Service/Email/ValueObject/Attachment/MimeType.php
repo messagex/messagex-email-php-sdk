@@ -8,6 +8,8 @@
 
 namespace MessageX\Service\Email\ValueObject\Attachment;
 
+use MessageX\Exception\InvalidArgumentType;
+
 /**
  * Class MimeType
  * @package MessageX\Service\Email\ValueObject\Attachment
@@ -620,11 +622,17 @@ final class MimeType
 
     /**
      * MimeType constructor.
-     * @param $extension
+     * @param string $extension
+     * @throws InvalidArgumentType
      */
     public function __construct($extension)
     {
         if (! is_string($extension)) {
+            if (! is_string($extension)) {
+                throw new InvalidArgumentType(
+                    sprintf('File extension has to be instance of string, %s given.', gettype($extension))
+                );
+            }
         }
 
         $this->mime = array_key_exists($extension, $this->mimeTypes)

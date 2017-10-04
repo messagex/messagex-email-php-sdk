@@ -11,6 +11,8 @@ namespace MessageX\Service\Email\ValueObject\Attachment;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
+use MessageX\Exception\FileDoesNotExist;
+use MessageX\Exception\InvalidArgumentType;
 use MessageX\Service\Email\Exception\FileTypeNotAllowed;
 use RuntimeException;
 use SplFileObject;
@@ -55,9 +57,22 @@ final class Attachment
      * @param string $name Name of the attachment.
      * @param string $mime Mime type of the attachment.
      * @param string $content Base64 encoded content of the attachment.
+     * @throws InvalidArgumentType
      */
     public function __construct($name, $mime, $content)
     {
+        if (! is_string($name)) {
+            throw new InvalidArgumentType(
+                sprintf('Attachment name has to be instance of string, %s given.', gettype($name))
+            );
+        }
+
+        if (! is_string($mime)) {
+            throw new InvalidArgumentType(
+                sprintf('Mime-Type has to be instance of string, %s given.', gettype($mime))
+            );
+        }
+
         $this->name     = $name;
         $this->mime     = $mime;
         $this->content  = base64_encode($content);
@@ -66,18 +81,20 @@ final class Attachment
     /**
      * @param string $path Absolute path to the file.
      * @return Attachment
+     * @throws FileDoesNotExist
      * @throws FileTypeNotAllowed
+     * @throws InvalidArgumentType
      */
     public static function fromFile($path)
     {
         if (! is_string($path)) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentType(
                 sprintf('Path has to be instance of string, %s given.', gettype($path))
             );
         }
 
         if (! file_exists($path)) {
-            throw new RuntimeException(
+            throw new FileDoesNotExist(
                 sprintf('File %s does not exist', $path)
             );
         }
