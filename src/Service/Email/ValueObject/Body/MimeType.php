@@ -7,6 +7,7 @@
  */
 
 namespace MessageX\Service\Email\ValueObject\Body;
+
 use MessageX\Exception\InvalidArgumentType;
 
 /**
