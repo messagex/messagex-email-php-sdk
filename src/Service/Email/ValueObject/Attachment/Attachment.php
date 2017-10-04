@@ -126,9 +126,9 @@ final class Attachment
     /**
      * @return string Content type of the attachment.
      */
-    public function getContentType()
+    public function getMime()
     {
-        return $this->contentType;
+        return $this->mime;
     }
 
     /**

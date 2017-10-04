@@ -12,6 +12,7 @@ namespace MessageX\Service\Email\ValueObject;
 use JMS\Serializer\Annotation as Serializer;
 use MessageX\Service\Email\Exception\RecipientsOutOfBound;
 use MessageX\Service\Email\ValueObject\Attachment\Attachment;
+use MessageX\Service\Email\ValueObject\Body\Body;
 
 /**
  * Class Email
@@ -40,7 +41,7 @@ final class Email
 
     /**
      * @var Body
-     * @Serializer\Type("MessageX\Service\Email\ValueObject\Body")
+     * @Serializer\Type("MessageX\Service\Email\ValueObject\Body\Body")
      */
     private $body;
 

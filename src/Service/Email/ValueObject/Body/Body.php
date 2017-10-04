@@ -7,16 +7,13 @@
  * file that was distributed with this source code.
  */
 
-namespace MessageX\Service\Email\ValueObject;
+namespace MessageX\Service\Email\ValueObject\Body;
 
 use JMS\Serializer\Annotation as Serializer;
-use InvalidArgumentException;
-use RuntimeException;
-use SplFileObject;
 
 /**
  * Class Body
- * @package MessageX\Service\Email\ValueObject
+ * @package MessageX\Service\Email\ValueObject\Body
  * @author Silvio Marijic <silvio.marijic@smsglobal.com>
  */
 final class Body
@@ -40,7 +37,7 @@ final class Body
      */
     public function __construct($mime, $content)
     {
-        $this->mime     = $mime;
+        $this->mime     = new MimeType($mime);
         $this->content  = $content;
     }
 
