@@ -27,7 +27,18 @@ Or from the CLI
 composer require messagex/messagex-php-sdk
 ```
 
-# Quickstart
+# Integration
+
+## Request Size
+When sending attachments there are no explicit file size limitations. Requests bigger then 30MB will be reject with HTTP 417 status code.
+
+## Error Handling
+All exceptions in SDK extend base MxException for easier handling of all exceptions rising from SDK. For more granular error handling email service
+has it's own base exception called EmailException.
+
+### Transport Errors
+For sending requests MessageX PHP SDK is using Guzzle HTTP Client. When API returns with status code other then 2*, Guzzle will throw exception
+depending on the group of status code (Server side, Client side). Guzzle related exceptions are not handled in SDK.
 
 ## Send an Email
 This is a minimal code sample needed in order to send a basic email using SDK.
