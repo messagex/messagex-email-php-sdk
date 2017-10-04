@@ -10,6 +10,7 @@
 namespace MessageX\Service\Email\ValueObject;
 
 use JMS\Serializer\Annotation as Serializer;
+use MessageX\Service\Email\Exception\HeaderNotAllowed;
 
 /**
  * Class Header
@@ -18,6 +19,23 @@ use JMS\Serializer\Annotation as Serializer;
  */
 final class Header
 {
+    /**
+     * @var array
+     */
+    private $unallowedHeaders = [
+        'x-msx-gid',
+        'received',
+        'dkim-signature',
+        'content-type',
+        'content-transfer-encoding',
+        'to',
+        'from',
+        'subject',
+        'reply-to',
+        'cc',
+        'bcc'
+    ];
+
     /**
      * @var string Name of the header.
      * @Serializer\Type("string")
@@ -34,11 +52,21 @@ final class Header
      * Header constructor.
      * @param string $name Name of the header.
      * @param mixed $value Value of the header.
+     * @throws HeaderNotAllowed
      */
     public function __construct($name, $value)
     {
-        $this->name = $name;
-        $this->value = $value;
+        if (in_array(strtolower($name), $this->unallowedHeaders)) {
+            throw new HeaderNotAllowed(
+                sprintf(
+                    'Header %s is not allowed to be overwritten',
+                    $name
+                )
+            );
+        }
+
+        $this->name     = $name;
+        $this->value    = $value;
     }
 
     /**
