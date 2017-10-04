@@ -1,0 +1,17 @@
+{
+    "service": {
+        "host": "https://email.api.messagex.com",
+        "endpoints": {
+            "SendEmail": {
+                "method": "POST",
+                "requestUri": "/email",
+                "type": "MessageX\\Service\\Email\\ValueObject\\Email",
+                "response": {
+                    "202": {
+
+                    }
+                }
+            }
+        }
+    }
+}
