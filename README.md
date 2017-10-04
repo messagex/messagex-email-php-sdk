@@ -16,7 +16,7 @@ Add following to the composer.json file
 ```json
     {
         "require": {
-            "messagex/messagex-php-sdk": "~1.0"
+            "messagex/email-php-sdk": "~1.0"
         }
     }
 ```
@@ -24,7 +24,7 @@ Add following to the composer.json file
 Or from the CLI
 
 ```bash
-composer require messagex/messagex-php-sdk
+composer require messagex/email-php-sdk
 ```
 
 # Integration
