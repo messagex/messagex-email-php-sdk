@@ -628,11 +628,9 @@ final class MimeType
     public function __construct($extension)
     {
         if (! is_string($extension)) {
-            if (! is_string($extension)) {
-                throw new InvalidArgumentType(
-                    sprintf('File extension has to be instance of string, %s given.', gettype($extension))
-                );
-            }
+            throw new InvalidArgumentType(
+                sprintf('File extension has to be instance of string, %s given.', gettype($extension))
+            );
         }
 
         $this->mime = array_key_exists($extension, $this->mimeTypes)

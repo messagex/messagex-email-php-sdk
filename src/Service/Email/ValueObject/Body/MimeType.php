@@ -43,11 +43,9 @@ final class MimeType
     public function __construct($mime)
     {
         if (! is_string($mime)) {
-            if (! is_string($mime)) {
-                throw new InvalidArgumentType(
-                    sprintf('Mime-Type has to be instance of string, %s given.', gettype($mime))
-                );
-            }
+            throw new InvalidArgumentType(
+                sprintf('Mime-Type has to be instance of string, %s given.', gettype($mime))
+            );
         }
 
         $this->mime = in_array($mime, $this->mimeTypes)
