@@ -46,7 +46,7 @@ final class Body
      */
     public function getMime()
     {
-        return $this->mime;
+        return (string) $this->mime;
     }
 
     /**
