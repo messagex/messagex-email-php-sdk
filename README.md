@@ -182,10 +182,10 @@ $emailClient->sendEmail(
         ->addSubstitution('name', ['Jane', 'Alice'])
 );
 ```
-# Documentation
+## Documentation
 
 ## SDK Reference
 
 ## API Reference
 
-# Getting help
+## Getting help
