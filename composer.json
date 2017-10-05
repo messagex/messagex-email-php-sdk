@@ -1,26 +1,21 @@
 {
     "name": "messagex/email-php-sdk",
     "type": "library",
-    "description": "MessageX PHP SDK",
-    "keywords": ["messagex", "php", "email", "sdk"],
+    "description": "PHP SDK to integrate with MessageX Email service",
+    "keywords": ["messagex", "mx", "php", "email", "sdk", "library"],
     "homepage": "https://www.messagex.com",
     "license": "MIT",
-    "authors": [
-        {"name": "Silvio Marijic", "email": "silvio.marijic@smsglobal.com"}
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@vines.smsglobal.local:messagex/libraries/php/php-sdk-common.git"
-        }
-    ],
+    "authors": [{
+        "name": "Silvio Marijic",
+        "email": "silvio.marijic@smsglobal.com"
+    }],
     "autoload": {
         "psr-4": {
             "MessageX\\": "src/"
         }
     },
     "require": {
-        "messagex/php-sdk-common": "dev-develop"
+        "messagex/php-sdk-common": "~0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "6.3.0"
