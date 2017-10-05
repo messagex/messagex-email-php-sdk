@@ -127,7 +127,7 @@ final class Attachment
 
         return new self(
             $file->getFilename(),
-            $mime,
+            (string) $mime,
             $content
         );
     }
