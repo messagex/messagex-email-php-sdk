@@ -11,13 +11,13 @@ namespace MessageX\Service\Email;
 
 use MessageX\MxClient;
 use MessageX\Service\Email\ValueObject\Email;
-use Psr\Http\Message\ResponseInterface;
+use MessageX\Service\Email\ValueObject\Response\EmailAccepted;
 
 /**
  * Class EmailClient
  * @package MessageX\Service\Email
  *
- * @method ResponseInterface sendEmail(Email $email)
+ * @method EmailAccepted sendEmail(Email $email)
  * @author Silvio Marijic <silvio.marijic@smsglobal.com>
  */
 class EmailClient extends MxClient
