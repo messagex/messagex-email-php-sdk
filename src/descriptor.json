@@ -4,11 +4,11 @@
         "endpoints": {
             "SendEmail": {
                 "method": "POST",
-                "requestUri": "/email",
+                "requestUri": "/email/send",
                 "type": "MessageX\\Service\\Email\\ValueObject\\Email",
                 "response": {
                     "202": {
-
+                        "type": "MessageX\\Service\\Email\\ValueObject\\Response\\EmailAccepted"
                     }
                 }
             }
