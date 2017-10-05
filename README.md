@@ -27,7 +27,7 @@ Add following to the composer.json file
 ```json
     {
         "require": {
-            "messagex/email-php-sdk": "~0.1"
+            "messagex/email-php-sdk": "~1.0"
         }
     }
 ```
