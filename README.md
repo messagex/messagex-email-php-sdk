@@ -46,7 +46,7 @@ This is a minimal code sample needed in order to send a basic email using SDK.
 require 'vendor/autoload.php';
 
 use MessageX\Service\Email\ValueObject\Email;
-use MessageX\Service\Email\ValueObject\Body;
+use MessageX\Service\Email\ValueObject\Body\Body;
 use MessageX\Service\Email\EmailClient;
 
 $emailClient = new EmailClient([
@@ -60,7 +60,7 @@ $emailClient->sendEmail(
 );
 ```
 
-Name of the reciever or sender can be added using notation showed in code sample above. Adding a name is not required, adding just email address is also supported. 
+Name of the receiver or sender can be added using notation showed in code sample above. Adding a name is not required, adding just email address is also supported. 
 At the moment only following content types are support for the email body
 
 * text/html
@@ -73,7 +73,7 @@ Adding CC and BCC is also  simple as
 require 'vendor/autoload.php';
 
 use MessageX\Service\Email\ValueObject\Email;
-use MessageX\Service\Email\ValueObject\Body;
+use MessageX\Service\Email\ValueObject\Body\Body;
 use MessageX\Service\Email\EmailClient;
 
 $emailClient = new EmailClient([
@@ -99,8 +99,8 @@ You can add one or more attachments to the email as following
 require 'vendor/autoload.php';
 
 use MessageX\Service\Email\ValueObject\Email;
-use MessageX\Service\Email\ValueObject\Body;
-use MessageX\Service\Email\ValueObject\Attachment;
+use MessageX\Service\Email\ValueObject\Body\Body;
+use MessageX\Service\Email\ValueObject\Attachment\Attachment;
 use MessageX\Service\Email\EmailClient;
 
 $emailClient = new EmailClient([
@@ -122,8 +122,8 @@ Tags are custom text labels associated with the the email. Maximum number of tag
 require 'vendor/autoload.php';
 
 use MessageX\Service\Email\ValueObject\Email;
-use MessageX\Service\Email\ValueObject\Body;
-use MessageX\Service\Email\ValueObject\Attachment;
+use MessageX\Service\Email\ValueObject\Body\Body;
+use MessageX\Service\Email\ValueObject\Attachment\Attachment;
 use MessageX\Service\Email\EmailClient;
 
 $emailClient = new EmailClient([
@@ -144,8 +144,8 @@ Also custom headers will be added to the email and sent to the recipients. Maxim
 require 'vendor/autoload.php';
 
 use MessageX\Service\Email\ValueObject\Email;
-use MessageX\Service\Email\ValueObject\Body;
-use MessageX\Service\Email\ValueObject\Attachment;
+use MessageX\Service\Email\ValueObject\Body\Body;
+use MessageX\Service\Email\ValueObject\Attachment\Attachment;
 use MessageX\Service\Email\EmailClient;
 
 $emailClient = new EmailClient([
@@ -167,8 +167,8 @@ Properties are representing placeholder strings in email body and value for each
 require 'vendor/autoload.php';
 
 use MessageX\Service\Email\ValueObject\Email;
-use MessageX\Service\Email\ValueObject\Body;
-use MessageX\Service\Email\ValueObject\Attachment;
+use MessageX\Service\Email\ValueObject\Body\Body;
+use MessageX\Service\Email\ValueObject\Attachment\Attachment;
 use MessageX\Service\Email\EmailClient;
 
 $emailClient = new EmailClient([
