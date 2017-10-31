@@ -9,6 +9,7 @@
 
 namespace MessageX\Service\Email;
 
+use GuzzleHttp\Promise\PromiseInterface;
 use MessageX\MxClient;
 use MessageX\Service\Email\ValueObject\Email;
 use MessageX\Service\Email\ValueObject\Response\EmailAccepted;
@@ -18,6 +19,7 @@ use MessageX\Service\Email\ValueObject\Response\EmailAccepted;
  * @package MessageX\Service\Email
  *
  * @method EmailAccepted sendEmail(Email $email)
+ * @method PromiseInterface sendEmailAsync(Email $email)
  * @author Silvio Marijic <silvio.marijic@smsglobal.com>
  */
 class EmailClient extends MxClient
