@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "messagex/php-sdk-common": "~0.1"
+        "messagex/php-sdk-common": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "6.3.0"
